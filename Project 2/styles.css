@@ -1,0 +1,75 @@
+* {
+  background-color: #03254E;
+  font-family: Amiri;
+  font-style: normal;
+  color: #FECEE9;
+  margin: 0;
+  padding: 0;
+}
+
+.ml3 {
+  position: relative;
+  font-weight: 400;
+  font-family: Amiri;
+  font-style: normal;
+  font-size: 3.5em;
+  margin-top: 20%;
+}
+
+#landing {
+    text-align: center;
+}
+
+.begin {
+  position: relative;
+  opacity: 0.5;
+}
+
+#message {
+  padding: 20% 25% 15% 25%;
+  font-size: 1.5em;
+  position: relative;
+  text-align: center;
+}
+
+#question {
+  position: relative;
+  padding: 20%;
+}
+
+.quest {
+  font-size: 3em;
+  text-align: center;
+  font-weight: 400;
+}
+
+.box {
+  margin-top: 5%;
+  font-size: 1.2em;
+  width: 850px;
+  height: 56px;
+  background: #E5E5E5;
+  color: #03254E;
+  border-radius: 26px;
+}
+
+.btn {
+  font-size: 1em;
+  margin-left: 45%;
+  margin-top: 5%;
+  background: #FECEE9;
+  color: #03254E;
+  height: 56px;
+  width: 100px;
+  border-radius: 26px;
+}
+
+p {
+  padding: 2%;
+}
+
+a {
+  text-decoration: none;
+  background: #FECEE9;
+  color: #03254E;
+}
