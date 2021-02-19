@@ -1,0 +1,299 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+// Exercise 1 ---------------------------------------------------------
+class Account {
+    
+    private:
+        int accountNumber;
+        double balance;
+    
+    public:
+        Account(int _accNum = 0, double _balance = 0){
+            accountNumber = _accNum;
+            balance = _balance;
+        }
+        
+        int getAccountNumber(){
+            return accountNumber;
+        }
+        
+        double getBalance(){
+            return balance;
+        }
+        
+        void setBalance(double newBalance){
+            balance = newBalance;
+        }
+        
+        void credit(double creditBalance){
+            balance += creditBalance;
+            cout << "Credit balance added. Your current balance is " << getBalance() << endl;
+        }
+        
+        void debit(double debitBalance){
+            if (debitBalance > balance) {
+                cout << "Amount withdrawn exceeds the current balance!" << endl;
+            }
+            else {
+                balance -= debitBalance;
+                cout << "Transaction complete. Your current balance is " << getBalance() << endl;
+            }
+        }
+        
+        void print(){
+            cout << "The account number: " << getAccountNumber() << endl;
+            cout << "With balance: " << getBalance() << endl;
+        }
+        
+};
+
+
+// Exercise 2 ---------------------------------------------------------
+class AccountStore {
+    private:
+        static int numOfAccounts;
+        Account* accounts[10];
+        int currentIndex = 0;
+        const int maxIndex = 9;
+    public:
+        
+        Account* getAccount(int index){
+            return accounts[index];
+        }
+        
+        int createAccount(int balance){
+            Account *accounts = new Account[currentIndex];
+            currentIndex++;
+            numOfAccounts++;
+            if (currentIndex == maxIndex)
+                return -1;
+            return currentIndex;
+        }
+        
+        bool deleteAt(int index){
+            if (index > 0 && index <= 9){
+                delete accounts[index];
+                return true;
+            }
+            return false;
+        }
+        
+        static int getNumOfAccounts(){
+            return numOfAccounts;
+        }
+};
+
+
+// Exercise 3 ---------------------------------------------------------
+class TestSingleton {
+private:
+    bool flag = false;
+    static TestSingleton *instance;
+    TestSingleton();
+    
+public:
+    static TestSingleton* getInstance();
+    
+    void setFlag(bool value){
+        flag = value;
+    }
+    bool getFlag(){
+        return flag;
+    }
+    void printFlag(){
+        cout << "Flag: " << flag << endl;
+    }
+    
+};
+
+// helper source: https://gist.github.com/pazdera/1098119
+TestSingleton* TestSingleton::instance = 0;
+
+TestSingleton* TestSingleton::getInstance(){
+    if (instance == 0){
+        instance = new TestSingleton();
+    }
+    return instance;
+}
+
+TestSingleton::TestSingleton(){}
+
+// Exercise 4 ------------------------------------------------------------
+
+class Time {
+    private:
+        int hour = 0;
+        int minute = 0;
+        int second = 0;
+    public:
+        Time(int _hour = 0, int _minute = 0, int _second = 0){
+            if (_hour >= 0 && _hour < 24 && _minute >= 0 && _minute < 60 && _second >= 0 && _second < 60){
+                hour = _hour;
+                minute = _minute;
+                second = _second;
+            }
+        }
+        int getHour(){
+            return hour;
+        }
+        int getMinute(){
+            return minute;
+        }
+        int getSecond(){
+            return second;
+        }
+        void setHour(int _hour){
+            hour = _hour;
+        }
+        void setMinute(int _min){
+            minute = _min;
+        }
+        void setSecond(int _sec){
+            second = _sec;
+        }
+        void setTime(int _hour, int _min, int _sec){
+            hour = _hour;
+            minute = _min;
+            second = _sec;
+        }
+        void nextSecond(){
+            second++;
+            if(getSecond()>59){
+                setSecond(0);
+                minute++;
+            }
+            if(getMinute()>59){
+                setMinute(0);
+                hour++;
+            }
+            if(getHour()>23){
+                setHour(0);
+            }
+        }
+        void printTime(){
+            string minuteValue = "0";
+            string hourValue = "0";
+            string secondValue = "0";
+            if (getMinute()<10){
+                minuteValue += to_string(getMinute());
+            }
+            else minuteValue = to_string(getMinute());
+            if (getHour()<10){
+                hourValue += to_string(getHour());
+            }
+            else hourValue = to_string(getHour());
+            if (getSecond()<10){
+                secondValue += to_string(getSecond());
+            }
+            else secondValue = to_string(getSecond());
+            cout << "Current time: " << hourValue << ":" << minuteValue << ":" << secondValue << endl;
+        }
+};
+
+
+// Exercise 5 ---------------------------------------------------------
+
+class Player {
+private:
+    string name;
+    int age;
+    string gender;
+    int score;
+    int health;
+public:
+    Player(string _name, int _age, string _gender){
+        score = 0;
+        health = 100;
+        name = _name;
+        age = _age;
+        gender = _gender;
+    }
+    Player(Player &obj){
+        score = obj.getScore();
+        health = obj.getHealth();
+        name = obj.getName();
+        age = obj.getAge();
+        gender = obj.getGender();
+    }
+    int getScore(){
+        return score;
+    }
+    int getHealth(){
+        return health;
+    }
+    int getAge(){
+        return age;
+    }
+    string getName(){
+        return name;
+    }
+    string getGender(){
+        return gender;
+    }
+};
+
+// Exercise 6 ---------------------------------------------------------
+class MyInt{
+private:
+    const int* val;
+public:
+    MyInt(const int* _val){
+        val = new int (*_val);
+    }
+    MyInt(){}
+    MyInt(MyInt& other){
+        val = new int (other.getValue());
+    }
+    int getValue() const{
+        return *val;
+    }
+    void printValue(){
+        cout << "Address value: " << val << endl;
+        cout << "Value: " << *val << endl;
+    }
+};
+
+
+int main() {
+    
+    // Exercise 1 ---------------------------------------------------------
+    Account A1(123, 1111);
+    A1.debit(523);
+    A1.credit(5);
+    A1.print();
+    
+    // Exercise 3 ---------------------------------------------------------
+    TestSingleton* Object = TestSingleton::getInstance();
+    cout << Object << endl;
+    TestSingleton* Object1 = TestSingleton::getInstance();
+    TestSingleton* Object2 = TestSingleton::getInstance();
+    Object->printFlag();
+    cout << Object1 << endl;
+    cout << Object2 << endl;
+    
+    // Exercise 4 ---------------------------------------------------------
+    Time time(23,59,59);
+    time.printTime();
+    time.nextSecond();
+    time.printTime();
+    
+    // Exercise 5 ---------------------------------------------------------
+    Player Amina("Amina", 20, "female");
+    Player shallowCopyAmina = Amina;
+    Player deepCopyAmina = *new Player(Amina);
+    cout << Amina.getName() << endl;
+    cout << deepCopyAmina.getName() << endl;
+    
+    // Exercise 6 ---------------------------------------------------------
+    int num = 8;
+    int* ptr = &num;
+    MyInt address(ptr);
+    address.printValue();
+    MyInt deepCopy(address);
+    deepCopy.printValue();
+    
+    return 0;
+}
