@@ -1,0 +1,174 @@
+* {
+  font-family: 'DotGothic16', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+canvas {
+  position: relative;
+  display: flex;
+  /* This centers our sketch horizontally. */
+  justify-content: center;
+  z-index: 1 !important;
+}
+
+#title {
+  position: relative;
+  text-align: center;
+  padding: 15% 20% 0 20%;
+}
+
+.navbar {
+  position: absolute;
+  display: inline;
+  font-size: 1.5em;
+  z-index: 3;
+  margin: 5%;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgba(173, 33, 33);
+  text-decoration: underline;
+}
+
+.navbar a {
+  color: black;
+  text-decoration: none;
+  padding: 10%;
+}
+
+.navbar a:hover {
+  font-size: 1.5em;
+  color: rgba(173, 33, 33);
+  text-decoration: underline;
+  padding: 2%;
+}
+
+.title-h1 {
+  display: inline;
+  font-size: 8em;
+
+}
+
+.title-h4 {
+  margin: 1%;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.8em;
+}
+
+#poems {
+  position: relative;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.poems-h1 {
+  position: absolute;
+  font-size: 4em;
+  margin: 3% 0 0 10%;
+}
+
+.poems-h4 {
+  font-size: 2em;
+  margin-top: 25%;
+}
+
+.poems-row {
+  position: relative;
+  margin-top: 5%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.row {
+  position: relative;
+  margin-top: 5%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.poems-col {
+  margin: 3%;
+  display: inline-block;
+  height: 200px;
+  width: 40%;
+  border: 2px;
+  text-align: center;
+  border-radius: 10%;
+}
+
+.col {
+  margin: 3%;
+  display: inline-block;
+  height: 200px;
+  width: 40%;
+  border: 2px;
+  text-align: left;
+  padding-left: 5%;
+}
+
+.poems-col:hover {
+  background-color: rgba(173, 33, 33, 0.1);
+}
+
+.poems-p {
+  font-size: 1.5em;
+}
+
+.poem-description {
+  font-family: Montserrat;
+  font-style: normal;
+  width: 50%;
+  margin-left: 20%;
+  margin-top: 20%;
+}
+
+.img-description {
+  width: 25%;
+  padding: 10% 37% 20% 37%;
+}
+
+.imageText {
+  padding-top: 10%;
+}
+
+.circle {
+    height: 180px;
+    width: 220px;
+    background-color: rgba(173, 33, 33, 0.39);
+    border-radius: 50%;
+    display: inline-block;
+    z-index: -3;
+}
+
+.add-space {
+  padding-bottom: 150px;
+}
+
+#about {
+  width: 50%;
+  padding: 5% 25% 5% 25%;
+  text-align: center;
+}
+
+.about-h2 {
+  font-size: 2em;
+}
+
+.about-p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5em;
+    padding: 5%;
+}
+
+footer {
+  text-align: center;
+  margin: 5%;
+  font-size: 0.8em;
+}
